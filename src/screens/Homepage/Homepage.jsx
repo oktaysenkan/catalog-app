@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import LeftMenu from "../../components/LeftMenu";
+import LeftMenu from '../../components/LeftMenu';
 
-import "./Homepage.css";
+import './Homepage.scss';
 
 function App() {
   return (

@@ -1,56 +1,56 @@
-import React from "react";
-import { Select, ButtonGroup, Button } from "@geist-ui/react";
+import React from 'react';
+import { Select, ButtonGroup, Button } from '@geist-ui/react';
 
-import "./LeftMenu.css";
+import './LeftMenu.scss';
 
 const LeftMenu = () => {
   const availableColors = [
     {
-      label: "Red",
-      colorCode: "red",
+      label: 'Red',
+      colorCode: 'red',
     },
     {
-      label: "Blue",
-      colorCode: "blue",
+      label: 'Blue',
+      colorCode: 'blue',
     },
     {
-      label: "Pink",
-      colorCode: "pink",
+      label: 'Pink',
+      colorCode: 'pink',
     },
     {
-      label: "Black",
-      colorCode: "black",
+      label: 'Black',
+      colorCode: 'black',
     },
     {
-      label: "Orange",
-      colorCode: "orange",
+      label: 'Orange',
+      colorCode: 'orange',
     },
     {
-      label: "Violet",
-      colorCode: "#7928CA",
+      label: 'Violet',
+      colorCode: '#7928CA',
     },
   ];
 
   const availablePrices = [
     {
-      label: "$50",
-      value: "50",
+      label: '$50',
+      value: '50',
     },
     {
-      label: "$100",
-      value: "100",
+      label: '$100',
+      value: '100',
     },
     {
-      label: "$200",
-      value: "200",
+      label: '$200',
+      value: '200',
     },
     {
-      label: "$300",
-      value: "300",
+      label: '$300',
+      value: '300',
     },
     {
-      label: "$400",
-      value: "400",
+      label: '$400',
+      value: '400',
     },
   ];
 
@@ -92,11 +92,7 @@ const LeftMenu = () => {
 
         <div className="colors">
           {availableColors.map((item) => (
-            <div
-              key={item.label}
-              style={colorStyle(item.colorCode)}
-              className="color"
-            />
+            <div key={item.label} style={colorStyle(item.colorCode)} className="color" />
           ))}
         </div>
       </div>
