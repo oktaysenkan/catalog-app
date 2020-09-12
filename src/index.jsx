@@ -1,19 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CssBaseline, GeistProvider } from '@geist-ui/react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
 import * as serviceWorker from './serviceWorker';
 
 import App from './screens/Homepage/Homepage';
 
+import rootReducer from './store';
+
 import './global.scss';
+
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <React.StrictMode>
-    <GeistProvider>
-      <CssBaseline />
+    <Provider store={store}>
       <App />
-    </GeistProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

@@ -1,29 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ProductListComponent from '../../components/ProductList';
-import http from '../../helpers/http';
+import { getAllProducts } from '../../store/actions/products';
 
 const ProductList = () => {
-  const [state, setState] = useState({
-    products: [],
-    loading: true,
-  });
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
 
   useEffect(() => {
-    const getProducts = async () => {
-      const { data: products } = await http.get('products');
+    dispatch(getAllProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-      setState({
-        ...state,
-        products,
-        loading: false,
-      });
-    };
-
-    getProducts();
-  }, [state]);
-
-  return <ProductListComponent products={state.products} loading={state.loading} />;
+  return <ProductListComponent products={products.products} loading={products.loading} />;
 };
 
 export default ProductList;
