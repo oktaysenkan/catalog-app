@@ -1,5 +1,5 @@
 import React from 'react';
-import { Select, ButtonGroup, Button } from '@geist-ui/react';
+import { Select, ButtonGroup, Button, Grid, Spacer } from '@geist-ui/react';
 
 import './LeftMenu.scss';
 
@@ -61,52 +61,56 @@ const LeftMenu = () => {
   };
 
   return (
-    <div className="left-menu">
-      <div className="section">
-        <h6 className="section-title">Type</h6>
+    <Grid sm={6} md={6} lg={4} xl={3} alignContent="center">
+      <div className="left-menu">
+        <Spacer y={3} />
 
-        <Select placeholder="Choose one">
-          <Select.Option value="1">T-Shirt</Select.Option>
-          <Select.Option value="2">Shirt</Select.Option>
-          <Select.Option value="3">Jacket</Select.Option>
-          <Select.Option value="4">Short</Select.Option>
-          <Select.Option value="5">Blazer</Select.Option>
-          <Select.Option value="6">Suit</Select.Option>
-        </Select>
-      </div>
+        <div className="section">
+          <h6 className="section-title">Type</h6>
 
-      <div className="section">
-        <h6 className="section-title">Body Size</h6>
+          <Select placeholder="Choose one">
+            <Select.Option value="1">T-Shirt</Select.Option>
+            <Select.Option value="2">Shirt</Select.Option>
+            <Select.Option value="3">Jacket</Select.Option>
+            <Select.Option value="4">Short</Select.Option>
+            <Select.Option value="5">Blazer</Select.Option>
+            <Select.Option value="6">Suit</Select.Option>
+          </Select>
+        </div>
 
-        <ButtonGroup size="mini">
-          <Button>XS</Button>
-          <Button>S</Button>
-          <Button>M</Button>
-          <Button>L</Button>
-          <Button>XL</Button>
-        </ButtonGroup>
-      </div>
+        <div className="section">
+          <h6 className="section-title">Body Size</h6>
 
-      <div className="section">
-        <h6 className="section-title">Color</h6>
+          <ButtonGroup size="mini">
+            <Button>XS</Button>
+            <Button>S</Button>
+            <Button>M</Button>
+            <Button>L</Button>
+            <Button>XL</Button>
+          </ButtonGroup>
+        </div>
 
-        <div className="colors">
-          {availableColors.map((item) => (
-            <div key={item.label} style={colorStyle(item.colorCode)} className="color" />
+        <div className="section">
+          <h6 className="section-title">Color</h6>
+
+          <div className="colors">
+            {availableColors.map((item) => (
+              <div key={item.label} style={colorStyle(item.colorCode)} className="color" />
+            ))}
+          </div>
+        </div>
+
+        <div className="section">
+          <h6 className="section-title">Price</h6>
+
+          {availablePrices.map((item) => (
+            <p key={item.value} className="price">
+              {item.label}
+            </p>
           ))}
         </div>
       </div>
-
-      <div className="section">
-        <h6 className="section-title">Price</h6>
-
-        {availablePrices.map((item) => (
-          <p key={item.value} className="price">
-            {item.label}
-          </p>
-        ))}
-      </div>
-    </div>
+    </Grid>
   );
 };
 

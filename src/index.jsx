@@ -1,14 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import './global.scss';
-import Homepage from './screens/Homepage';
+import { CssBaseline, GeistProvider } from '@geist-ui/react';
 
 import * as serviceWorker from './serviceWorker';
 
+import App from './screens/Homepage/Homepage';
+
+import './global.scss';
+
 ReactDOM.render(
   <React.StrictMode>
-    <Homepage />
+    <GeistProvider>
+      <CssBaseline />
+      <App />
+    </GeistProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

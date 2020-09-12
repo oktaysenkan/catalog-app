@@ -1,5 +1,13 @@
+@import '../../mixins.scss';
+
 .left-menu {
-  width: 200px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @include media('<650px') {
+    background-color: red;
+    display: none;
+  }
 
   .section {
     margin-bottom: 36px;

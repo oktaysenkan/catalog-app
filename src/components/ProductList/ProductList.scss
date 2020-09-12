@@ -1,0 +1,35 @@
+.product-list {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  .title {
+    font-size: 1.5rem;
+    -webkit-letter-spacing: -0.029375rem;
+    -moz-letter-spacing: -0.029375rem;
+    -ms-letter-spacing: -0.029375rem;
+    letter-spacing: -0.029375rem;
+    font-weight: 600;
+  }
+
+  .products {
+    margin-top: 24px;
+
+    .product {
+      cursor: pointer;
+
+      img {
+        height: 300px;
+        object-fit: cover;
+        border-radius: 5px 5px 0px 0px;
+      }
+
+      .content {
+        padding: 0 !important;
+      }
+
+      .product-content {
+        padding: 16pt;
+      }
+    }
+  }
+}
