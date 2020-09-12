@@ -1,6 +1,7 @@
 .product-list {
   padding-left: 1rem;
   padding-right: 1rem;
+  flex: 1;
 
   .title {
     font-size: 1.5rem;
@@ -13,6 +14,10 @@
 
   .products {
     margin-top: 24px;
+
+    .loading {
+      background-color: red;
+    }
 
     .product {
       cursor: pointer;

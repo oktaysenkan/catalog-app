@@ -6,6 +6,7 @@ import http from '../../helpers/http';
 const ProductList = () => {
   const [state, setState] = useState({
     products: [],
+    loading: true,
   });
 
   useEffect(() => {
@@ -15,13 +16,14 @@ const ProductList = () => {
       setState({
         ...state,
         products,
+        loading: false,
       });
     };
 
     getProducts();
-  }, []);
+  }, [state]);
 
-  return <ProductListComponent products={state.products} />;
+  return <ProductListComponent products={state.products} loading={state.loading} />;
 };
 
 export default ProductList;
