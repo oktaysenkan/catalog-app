@@ -2,7 +2,7 @@ import { Grid } from '@geist-ui/react';
 import React from 'react';
 
 import LeftMenu from '../../components/LeftMenu';
-import ProductList from '../../components/ProductList';
+import ProductList from '../../containers/ProductList';
 
 import './Homepage.scss';
 

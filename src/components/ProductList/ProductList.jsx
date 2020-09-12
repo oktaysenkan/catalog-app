@@ -1,27 +1,12 @@
 import React from 'react';
-import { Card, Grid } from '@geist-ui/react';
-import faker from 'faker';
+import PropTypes from 'prop-types';
+import { Grid } from '@geist-ui/react';
+
+import Product from '../Product/Product';
 
 import './ProductList.scss';
 
-const ProductList = () => {
-  const mockArray = new Array(10).fill();
-
-  const MockItem = () => {
-    return (
-      <Grid xs={24} sm={12} md={12} lg={8}>
-        <Card hoverable className="product">
-          <img alt="product" src={`https://source.unsplash.com/weekly?${faker.random.word()}`} />
-
-          <div className="product-content">
-            <h4>{faker.commerce.productName()}</h4>
-            <p>{faker.random.words(26)}</p>
-          </div>
-        </Card>
-      </Grid>
-    );
-  };
-
+const ProductList = ({ products }) => {
   return (
     <Grid.Container sm={18} md={18} lg={20} xl={21}>
       <div className="product-list">
@@ -29,14 +14,24 @@ const ProductList = () => {
 
         <div className="products">
           <Grid.Container gap={2}>
-            {mockArray.map(() => (
-              <MockItem />
+            {products.map((item) => (
+              <Product key={item.id} product={item} />
             ))}
           </Grid.Container>
         </div>
       </div>
     </Grid.Container>
   );
+};
+
+ProductList.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      imageUrl: PropTypes.string.isRequried,
+      productName: PropTypes.string.isRequired,
+      color: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default ProductList;
