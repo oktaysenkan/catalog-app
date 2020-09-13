@@ -1,24 +1,55 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { Grid, Loading } from '@geist-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
+
+import { getAllProducts, showProductModal } from '../../store/actions/products';
 
 import Product from '../Product/Product';
 
 import './ProductList.scss';
 
-const ProductList = ({ products, loading, onClick }) => {
+const ProductList = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products);
+  const filters = useSelector((state) => state.products.filters);
+  const orderBy = useSelector((state) => state.products.orderBy);
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleProductPress = async (product) => {
+    dispatch(showProductModal(product));
+  };
+
+  const filteredResult = products.products
+    .filter((item) => (filters.type ? filters.type === item.type : true))
+    .filter((item) => (filters.color ? filters.color === item.color : true))
+    .filter((item) => (filters.price ? filters.price >= item.price : true))
+    .filter((item) => (filters.bodySize ? filters.bodySize === item.bodySize : true));
+
+  const orderedResult = filteredResult.sort((a, b) => {
+    if (orderBy === 'createdAt') {
+      return moment(a.createdAt).unix() - moment(b.createdAt).unix();
+    }
+
+    return a[orderBy] - b[orderBy];
+  });
+
   return (
     <Grid.Container sm={18} md={18} lg={20} xl={21}>
       <div className="product-list">
         <h1 className="title">Products</h1>
 
         <div className="products">
-          {loading ? (
+          {products.loading ? (
             <Loading size="large" />
           ) : (
             <Grid.Container gap={2}>
-              {products.map((item) => (
-                <Product key={item.id} product={item} onClick={() => onClick(item)} />
+              {orderedResult.map((item) => (
+                <Product key={item.id} product={item} onClick={() => handleProductPress(item)} />
               ))}
             </Grid.Container>
           )}
@@ -26,22 +57,6 @@ const ProductList = ({ products, loading, onClick }) => {
       </div>
     </Grid.Container>
   );
-};
-
-ProductList.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      imageUrl: PropTypes.string.isRequried,
-      productName: PropTypes.string.isRequired,
-      color: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
-  loading: PropTypes.bool.isRequired,
-  onClick: PropTypes.func,
-};
-
-ProductList.defaultProps = {
-  onClick: () => {},
 };
 
 export default ProductList;

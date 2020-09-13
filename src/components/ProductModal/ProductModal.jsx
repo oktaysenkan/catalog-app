@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as changecase from 'change-case';
 
 import { closeProductModal } from '../../store/actions/products';
+import { addBasket } from '../../store/actions/basket';
 import Color from '../../enums/color';
 import ProductType from '../../enums/product-type';
 import BodySize from '../../enums/body-size';
 
 import './ProductModal.scss';
-import { addBasket } from '../../store/actions/basket';
 
 const ProductModal = () => {
   const dispatch = useDispatch();

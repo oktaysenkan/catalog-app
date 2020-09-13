@@ -3,7 +3,7 @@ import React from 'react';
 
 import LeftMenu from '../../components/LeftMenu';
 import ProductModal from '../../components/ProductModal/ProductModal';
-import ProductList from '../../containers/ProductList';
+import ProductList from '../../components/ProductList';
 
 import './Homepage.scss';
 
