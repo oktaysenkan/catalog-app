@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Grid, Loading } from '@geist-ui/react';
+import { Grid, Loading, Note } from '@geist-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 
@@ -43,6 +43,24 @@ const ProductList = () => {
     orderedResult.reverse();
   }
 
+  const Products = () => {
+    return (
+      <Grid.Container gap={2}>
+        {orderedResult.map((item) => (
+          <Product key={item.id} product={item} onClick={() => handleProductPress(item)} />
+        ))}
+      </Grid.Container>
+    );
+  };
+
+  const NotFound = () => {
+    return (
+      <Note className="not-found" type="default" filled>
+        Your search criteria matches no results.
+      </Note>
+    );
+  };
+
   return (
     <Grid.Container sm={18} md={18} lg={20} xl={21}>
       <div className="product-list">
@@ -52,11 +70,7 @@ const ProductList = () => {
           {products.loading ? (
             <Loading size="large" />
           ) : (
-            <Grid.Container gap={2}>
-              {orderedResult.map((item) => (
-                <Product key={item.id} product={item} onClick={() => handleProductPress(item)} />
-              ))}
-            </Grid.Container>
+            <>{orderedResult.length ? <Products /> : <NotFound />}</>
           )}
         </div>
       </div>
