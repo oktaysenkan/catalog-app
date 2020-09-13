@@ -5,11 +5,14 @@ import * as changecase from 'change-case';
 
 import Color from '../../enums/color';
 import ProductType from '../../enums/product-type';
+import BodySize from '../../enums/body-size';
 
 const Product = ({ product, onClick }) => {
   const colorAsString = changecase.sentenceCase(Color[product.color]);
 
   const productTypeAsString = changecase.sentenceCase(ProductType[product.type]);
+
+  const bodySizeAsString = changecase.sentenceCase(BodySize[product.bodySize]);
 
   return (
     <Grid xs={24} sm={12} md={12} lg={8}>
@@ -20,6 +23,7 @@ const Product = ({ product, onClick }) => {
           <h4>{product.productName}</h4>
           <p>Color: {colorAsString}</p>
           <p>Type: {productTypeAsString}</p>
+          <p>Body Size: {bodySizeAsString}</p>
           <p>Price: ${product.price}</p>
         </div>
       </Card>
@@ -33,6 +37,7 @@ Product.propTypes = {
     color: PropTypes.number.isRequired,
     imageUrl: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
+    bodySize: PropTypes.number.isRequired,
     type: PropTypes.number.isRequired,
   }).isRequired,
   onClick: PropTypes.func,
