@@ -47,7 +47,6 @@ const ProductModal = () => {
     BodySize[showingProduct?.product?.bodySize] || '',
   );
 
-  // eslint-disable-next-line consistent-return
   return (
     <Modal className="product-modal" width="35rem" {...bindings} onClose={handleProductModalClose}>
       {showingProduct?.product?.loading ? (

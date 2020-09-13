@@ -14,6 +14,7 @@ const ProductList = () => {
   const products = useSelector((state) => state.products);
   const filters = useSelector((state) => state.products.filters);
   const orderBy = useSelector((state) => state.products.orderBy);
+  const orderDirection = useSelector((state) => state.products.orderDirection);
 
   useEffect(() => {
     dispatch(getAllProducts());
@@ -37,6 +38,10 @@ const ProductList = () => {
 
     return a[orderBy] - b[orderBy];
   });
+
+  if (orderDirection === 'asc') {
+    orderedResult.reverse();
+  }
 
   return (
     <Grid.Container sm={18} md={18} lg={20} xl={21}>

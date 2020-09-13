@@ -146,11 +146,23 @@ const follows = (state = defaultState, action) => {
         filters: defaultState.filters,
       };
 
-    case SET_ORDER_BY:
+    case SET_ORDER_BY: {
+      const isSameBefore = action.orderBy === state.orderBy;
+
+      let orderDirection;
+
+      if (isSameBefore) {
+        orderDirection = state.orderDirection === 'asc' ? 'desc' : 'asc';
+      } else {
+        orderDirection = 'desc';
+      }
+
       return {
         ...state,
         orderBy: action.orderBy,
+        orderDirection,
       };
+    }
 
     default:
       return state;

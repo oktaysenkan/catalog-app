@@ -1,0 +1,17 @@
+.product {
+  cursor: pointer;
+
+  img {
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px 5px 0px 0px;
+  }
+
+  .content {
+    padding: 0 !important;
+  }
+
+  .product-content {
+    padding: 16pt;
+  }
+}

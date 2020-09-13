@@ -7,6 +7,8 @@ import Color from '../../enums/color';
 import ProductType from '../../enums/product-type';
 import BodySize from '../../enums/body-size';
 
+import './Product.scss';
+
 const Product = ({ product, onClick }) => {
   const colorAsString = changecase.sentenceCase(Color[product.color]);
 
