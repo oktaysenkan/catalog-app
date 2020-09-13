@@ -1,8 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Grid } from '@geist-ui/react';
+import * as changecase from 'change-case';
+
+import Color from '../../enums/color';
+import ProductType from '../../enums/product-type';
 
 const Product = ({ product, onClick }) => {
+  const colorAsString = changecase.sentenceCase(Color[product.color]);
+
+  const productTypeAsString = changecase.sentenceCase(ProductType[product.type]);
+
   return (
     <Grid xs={24} sm={12} md={12} lg={8}>
       <Card hoverable className="product" onClick={onClick}>
@@ -10,9 +18,9 @@ const Product = ({ product, onClick }) => {
 
         <div className="product-content">
           <h4>{product.productName}</h4>
-          <p>{product.color}</p>
-          <p>${product.price}</p>
-          <p>{product.type}</p>
+          <p>Color: {colorAsString}</p>
+          <p>Type: {productTypeAsString}</p>
+          <p>Price: ${product.price}</p>
         </div>
       </Card>
     </Grid>
