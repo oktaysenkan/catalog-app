@@ -6,7 +6,7 @@ import Product from '../Product/Product';
 
 import './ProductList.scss';
 
-const ProductList = ({ products, loading }) => {
+const ProductList = ({ products, loading, onClick }) => {
   return (
     <Grid.Container sm={18} md={18} lg={20} xl={21}>
       <div className="product-list">
@@ -18,7 +18,7 @@ const ProductList = ({ products, loading }) => {
           ) : (
             <Grid.Container gap={2}>
               {products.map((item) => (
-                <Product key={item.id} product={item} />
+                <Product key={item.id} product={item} onClick={() => onClick(item)} />
               ))}
             </Grid.Container>
           )}
@@ -37,6 +37,11 @@ ProductList.propTypes = {
     }),
   ).isRequired,
   loading: PropTypes.bool.isRequired,
+  onClick: PropTypes.func,
+};
+
+ProductList.defaultProps = {
+  onClick: () => {},
 };
 
 export default ProductList;
