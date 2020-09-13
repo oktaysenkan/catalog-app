@@ -10,6 +10,7 @@ import {
   filterColor,
   filterPrice,
   filterType,
+  resetFilters,
   setOrderBy,
 } from '../../store/actions/products';
 import BodySize from '../../enums/body-size';
@@ -102,6 +103,10 @@ const LeftMenu = () => {
     dispatch(setOrderBy(value));
   };
 
+  const handleResetFilters = () => {
+    dispatch(resetFilters());
+  };
+
   return (
     <Grid sm={6} md={6} lg={4} xl={3} alignContent="center">
       <div className="left-menu">
@@ -155,6 +160,10 @@ const LeftMenu = () => {
               <p className="price">{item.label}</p>
             </div>
           ))}
+        </div>
+
+        <div onClick={handleResetFilters}>
+          <h6 className="reset-filters">Reset Filters</h6>
         </div>
 
         <div className="section">

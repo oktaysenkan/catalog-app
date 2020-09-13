@@ -23,6 +23,17 @@
     font-weight: 500;
   }
 
+  .reset-filters {
+    height: 0.875rem;
+    line-height: 0.875rem;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    color: rgb(16, 16, 16);
+    font-weight: 500;
+    cursor: pointer;
+  }
+
   .colors {
     display: flex;
     flex-direction: row;
