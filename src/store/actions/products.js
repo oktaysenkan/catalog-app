@@ -8,6 +8,12 @@ import {
   FETCH_PRODUCT_DETAILS_START,
   FETCH_PRODUCT_DETAILS_ERROR,
   FETCH_PRODUCT_DETAILS_LOADED,
+  FILTER_TYPE,
+  FILTER_BODY_SIZE,
+  FILTER_COLOR,
+  FILTER_PRICE,
+  RESET_FILTERS,
+  SET_ORDER_BY,
 } from '../constants/action-types';
 
 export const fetchAllProductsStarted = () => ({
@@ -82,5 +88,46 @@ export const showProductModal = (payload) => async (dispatch) => {
 export const closeProductModal = () => async (dispatch) => {
   dispatch({
     type: CLOSE_PRODUCT_MODAL,
+  });
+};
+
+export const filterType = (type) => async (dispatch) => {
+  dispatch({
+    type: FILTER_TYPE,
+    productType: type,
+  });
+};
+
+export const filterBodySize = (bodySize) => async (dispatch) => {
+  dispatch({
+    type: FILTER_BODY_SIZE,
+    bodySize,
+  });
+};
+
+export const filterColor = (color) => async (dispatch) => {
+  dispatch({
+    type: FILTER_COLOR,
+    color,
+  });
+};
+
+export const filterPrice = (price) => async (dispatch) => {
+  dispatch({
+    type: FILTER_PRICE,
+    price,
+  });
+};
+
+export const resetFilters = () => async (dispatch) => {
+  dispatch({
+    type: RESET_FILTERS,
+  });
+};
+
+export const setOrderBy = (orderBy) => async (dispatch) => {
+  dispatch({
+    type: SET_ORDER_BY,
+    orderBy,
   });
 };

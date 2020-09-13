@@ -7,6 +7,12 @@ import {
   FETCH_PRODUCT_DETAILS_START,
   FETCH_PRODUCT_DETAILS_LOADED,
   FETCH_PRODUCT_DETAILS_ERROR,
+  FILTER_TYPE,
+  FILTER_BODY_SIZE,
+  FILTER_COLOR,
+  FILTER_PRICE,
+  RESET_FILTERS,
+  SET_ORDER_BY,
 } from '../constants/action-types';
 
 const defaultState = {
@@ -19,6 +25,14 @@ const defaultState = {
     hidden: true,
     product: null,
   },
+  filters: {
+    type: null,
+    color: null,
+    bodySize: null,
+    price: 0,
+  },
+  orderBy: 'createdAt',
+  orderDirection: 'desc',
 };
 
 const follows = (state = defaultState, action) => {
@@ -88,6 +102,54 @@ const follows = (state = defaultState, action) => {
           loading: false,
           error: action.error,
         },
+      };
+
+    case FILTER_TYPE:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          type: action.productType,
+        },
+      };
+
+    case FILTER_BODY_SIZE:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          bodySize: action.bodySize,
+        },
+      };
+
+    case FILTER_COLOR:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          color: action.color,
+        },
+      };
+
+    case FILTER_PRICE:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          price: action.price,
+        },
+      };
+
+    case RESET_FILTERS:
+      return {
+        ...state,
+        filters: defaultState.filters,
+      };
+
+    case SET_ORDER_BY:
+      return {
+        ...state,
+        orderBy: action.orderBy,
       };
 
     default:

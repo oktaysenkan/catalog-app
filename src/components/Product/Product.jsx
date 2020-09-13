@@ -12,7 +12,7 @@ const Product = ({ product, onClick }) => {
 
   const productTypeAsString = changecase.sentenceCase(ProductType[product.type]);
 
-  const bodySizeAsString = changecase.sentenceCase(BodySize[product.bodySize]);
+  const bodySizeAsString = changecase.constantCase(BodySize[product.bodySize]);
 
   return (
     <Grid xs={24} sm={12} md={12} lg={8}>

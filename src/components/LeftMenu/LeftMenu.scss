@@ -48,6 +48,20 @@
     width: fit-content;
   }
 
+  .order-wrapper {
+    cursor: pointer;
+    width: fit-content;
+
+    .order {
+      height: 0.875rem;
+      line-height: 0.875rem;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      color: #111;
+      letter-spacing: 0.2px;
+    }
+  }
+
   /* Override ButtonGroup component */
   .btn-group {
     margin: 0px !important;

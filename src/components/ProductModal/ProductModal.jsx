@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Loading, Modal, Spacer, useModal } from '@geist-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeProductModal } from '../../store/actions/products';
@@ -44,28 +43,6 @@ const ProductModal = () => {
       )}
     </Modal>
   );
-};
-
-ProductModal.propTypes = {
-  showingProduct: PropTypes.shape({
-    product: PropTypes.shape({
-      productName: PropTypes.string,
-      color: PropTypes.number,
-      imageUrl: PropTypes.string,
-      price: PropTypes.number,
-      bodySize: PropTypes.number,
-      type: PropTypes.number,
-      loading: PropTypes.bool,
-      error: PropTypes.bool,
-    }),
-  }).isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  bindings: PropTypes.any.isRequired,
-  onClose: PropTypes.func,
-};
-
-ProductModal.defaultProps = {
-  onClose: () => {},
 };
 
 export default ProductModal;
