@@ -16,3 +16,5 @@ export const FILTER_PRICE = 'FILTER_PRICE';
 export const RESET_FILTERS = 'RESET_FILTERS';
 
 export const SET_ORDER_BY = 'SET_ORDER_BY';
+
+export const ADD_BASKET = 'ADD_BASKET';

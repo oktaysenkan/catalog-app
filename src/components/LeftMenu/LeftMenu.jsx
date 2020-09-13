@@ -3,9 +3,8 @@
 
 import React from 'react';
 import { Select, ButtonGroup, Button, Grid, Spacer } from '@geist-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import './LeftMenu.scss';
-import { useDispatch } from 'react-redux';
 import {
   filterBodySize,
   filterColor,
@@ -15,8 +14,11 @@ import {
 } from '../../store/actions/products';
 import BodySize from '../../enums/body-size';
 
+import './LeftMenu.scss';
+
 const LeftMenu = () => {
   const dispatch = useDispatch();
+  const basket = useSelector((state) => state.basket);
 
   const availableColors = [
     {
@@ -164,6 +166,14 @@ const LeftMenu = () => {
 
           <div className="order-wrapper" onClick={() => handleOrderByChange('price')}>
             <p className="order">Price</p>
+          </div>
+        </div>
+
+        <div className="section row">
+          <h6 className="section-title">Basket</h6>
+
+          <div className="order-wrapper">
+            <p className="order">{basket.length} Items</p>
           </div>
         </div>
       </div>

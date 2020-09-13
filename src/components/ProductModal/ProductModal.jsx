@@ -9,6 +9,7 @@ import ProductType from '../../enums/product-type';
 import BodySize from '../../enums/body-size';
 
 import './ProductModal.scss';
+import { addBasket } from '../../store/actions/basket';
 
 const ProductModal = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,10 @@ const ProductModal = () => {
     setTimeout(() => {
       dispatch(closeProductModal());
     }, 150);
+  };
+
+  const handleAddBasketPress = () => {
+    dispatch(addBasket(showingProduct.product));
   };
 
   const colorAsString = changecase.sentenceCase(Color[showingProduct?.product?.color] || '');
@@ -64,7 +69,7 @@ const ProductModal = () => {
             <p>Price: ${showingProduct?.product?.price}</p>
           </Modal.Content>
           <Modal.Action className="actions">
-            <Button className="add-basket" type="secondary">
+            <Button className="add-basket" type="secondary" onClick={handleAddBasketPress}>
               Add Basket
             </Button>
           </Modal.Action>
